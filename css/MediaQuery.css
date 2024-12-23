@@ -1,0 +1,57 @@
+@media (max-width:1200px) {
+    
+}
+
+@media (max-width:1024px) {
+    header{
+        padding: 10px;
+        overflow-x: visible;
+    }
+
+    header nav{
+        position: absolute;
+        width: 100%;
+        top: 88px;
+        left: 0;
+        display: none;
+    }
+
+    header .active nav{
+        display: block;
+    }
+
+    header nav ul li{
+        width: 100%;
+    }
+
+    header nav ul li a{
+        position: relative;
+        z-index: 2;
+        border: 1px solid white;
+    }
+
+    header nav ul li a:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: .8;
+
+    }
+
+}
+
+@media (max-width: 786px) {
+
+}
+
+@media (max-width: 610px) {
+
+}
+
+@media (max-width:425px) {
+
+}

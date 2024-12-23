@@ -1,0 +1,118 @@
+
+.One{
+
+}
+
+.One h1{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 50px;
+    font-weight: 700;
+    
+}
+
+.One p{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 15px;
+    justify-content: center;
+    justify-items: center;
+    padding: 0 350px 0 350px;
+    
+}
+
+.one .details{
+    display: flex;
+    margin: 10px;
+    
+}
+
+.One details .first{
+    
+}
+
+.One .details .first h2{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.One .details .second h2{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.One .details .first p{
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    
+  
+}
+
+.One .details .second p{
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+/* ---------------------------------*\
+    #what our client say about us     
+\*----------------------------------*/
+
+.two h1{
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-weight: 700;
+    
+
+}
+
+.two .testimonial-container{
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.two .testimonial{
+    display: flex;
+    margin: 50px;
+    border-bottom: 8px;
+}
+
+.two .testimonial p{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.6;
+    font-style: italic;
+    border-bottom: 1px solid #ddd;
+}
+
+.two .testimonial h3{
+    color: white;
+    font-size: 25px;
+}
+
+
+/* ---------------------------------*\
+    #Footer Styling    
+\*----------------------------------*/
+
+.footer{
+    background-color: black;
+    color: white;
+}
+
+.footer .content{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    gap: 18rem;
+    padding-bottom: 10px;
+}
+
+.footer .Menu{
+    padding-left: 20px;
+}
