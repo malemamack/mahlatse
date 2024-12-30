@@ -1,9 +1,85 @@
+.carousel-item {
+    position: relative;
+}
+
 .carousel-item img {
-    height: 500px; /* Set a fixed height */
+    height: 85%; /* Set a fixed height */
     object-fit: cover; /* Ensure the image covers the entire area */
     border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+    opacity: 0.5; /* Make the image transparent */
 }
+
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.9; /* Adjust the opacity as needed */
+    border-radius: 10px; /* Match the border radius of the image */
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 30%;
+    justify-self: center;
+    text-align: center;
+    color: white; /* Ensure the text is visible */
+}
+
+.carousel-caption h5 {
+    font-size: 2.5rem; 
+    font-weight: bold; /* Make the text bold */
+}
+
+.carousel-caption p {
+    font-size: 1.5rem; /* Adjust the font size as needed */
+}
+
+
+/*-----------------------------------*\
+  #SectionTwo Styling
+\*-----------------------------------*/
+
+.sectionTwo {
+    background-color: #f8f9fa; /* Light background color */
+    padding: 15px 0; /* Vertical padding */
+    text-align: center; /* Center align text */
+}
+
+.sectionTwo .banner {
+    background-color: #343a40; /* Dark background color */
+    color: white; /* White text color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 98%; /* Maximum width of the banner */
+    margin: 0 auto; /* Center the banner horizontally */
+}
+
+.sectionTwo .banner h2 {
+    font-size: 2rem; /* Font size for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.sectionTwo .banner p {
+    font-size: 1.25rem; /* Font size for the paragraph */
+    margin: 0; /* Remove default margin */
+}
+
+.sectionTwo .banner li {
+    list-style-type: none; /* Remove bullet points */
+    margin: 10px 0; /* Space between list items */
+}
+
+.sectionTwo .banner ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
 
 /*-----------------------------------*\
   #PRICING
@@ -15,9 +91,16 @@
     z-index: -1;
 }
 
+
+
 .pricing-tab-container {
     background-color: white;
     padding: 40px 5px;
+}
+
+.container h2{
+    text-align: center;
+
 }
 
 .tab-filter{
@@ -28,8 +111,130 @@
     margin-block-end: 30px;
 }
 
+.filter-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns for the first line */
+    gap: 20px; /* Adjust the gap between buttons as needed */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center; /* Center the buttons horizontally */
+}
+
+.filter-list li:nth-child(n+6) {
+    grid-column: span 2; /* Ensure the second line starts from the 6th button */
+}
+
 .filter-btn {
-    color: grey;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    column-count: 5;
+    background-color: #f0f0f0; /* Adjust the background color as needed */
+    border: 1px solid #ddd; /* Adjust the border as needed */
+    border-radius: 8px; /* Adjust the border radius as needed */
+    padding: 10px 20px; /* Adjust the padding as needed */
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    min-width: 130px; /* Ensure a minimum width for the buttons */
+}
+
+.filter-btn:hover {
+    background-color: #007bff; /* Adjust the hover background color as needed */
+    transform: translateY(-5px); /* Adjust the hover transform as needed */
+}
+
+.filter-btn .btn-icon {
+    margin-bottom: 10px; /* Adjust the margin between icon and text as needed */
+}
+
+.filter-btn .btn-icon img {
+    width: 40px; /* Adjust the icon size as needed */
+    height: 40px; /* Adjust the icon size as needed */
+}
+
+.filter-btn .btn-text {
+    font-size: 16px; /* Adjust the text size as needed */
+    color: #333; /* Adjust the text color as needed */
+    text-transform: uppercase; /* Ensure text is uppercase */
+}
+
+.filter-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns for the first line */
+    gap: 20px; /* Adjust the gap between buttons as needed */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center; /* Center the buttons horizontally */
+}
+
+.filter-list li:nth-child(n+6) {
+    grid-column: span 1; /* Ensure the second line starts from the 6th button */
+}
+
+.filter-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0; /* Adjust the background color as needed */
+    border: 1px solid #ddd; /* Adjust the border as needed */
+    border-radius: 8px; /* Adjust the border radius as needed */
+    padding: 10px 20px; /* Adjust the padding as needed */
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    min-width: 130px; /* Ensure a minimum width for the buttons */
+    color: black;
+    text-transform: uppercase;
+}
+
+.filter-btn:hover {
+    background-color: #e0e0e0; /* Adjust the hover background color as needed */
+    transform: translateY(-5px); /* Adjust the hover transform as needed */
+}
+
+.filter-btn.active {
+    background-color: #007bff; /* Active background color */
+    color: white; /* Active text color */
+    border-color: black; /* Active border color */
+}
+
+.filter-btn .btn-icon {
+    margin-bottom: 10px; /* Adjust the margin between icon and text as needed */
+    justify-items: center;
+}
+
+.filter-btn .btn-icon img {
+    width: 40px; /* Adjust the icon size as needed */
+    height: 40px; /* Adjust the icon size as needed */
+}
+
+.filter-btn .btn-text {
+    font-size: 16px; /* Adjust the text size as needed */
+    color: #333; /* Adjust the text color as needed */
+    text-transform: uppercase; /* Ensure text is uppercase */
+}
+
+.pricing .grid-list {
+    padding-inline: 20px;
+}
+
+.pricing .grid-list > li.active {
+    animation: popup 0.75s;
+    -webkit-animation: popup 0.75s;
+}
+
+@keyframes popup {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.filter-btn {
+    color: black;
     text-transform: uppercase;
     min-width: 130px;
     padding-block: 12px;
@@ -49,7 +254,7 @@
 .filter-btn .btn-icon{ display: ;}
 
 .filter-btn .active {
-    background-color: grey;
+    background-color: #007bff;
     color: white;
     border-color: black;
 }
@@ -82,6 +287,17 @@
     gap: 15px;
 }
 
+.grid-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Adjust the gap between columns as needed */
+}
+
+.pricing-card {
+    padding: 20px; /* Adjust the padding as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adjust the box shadow as needed */
+}
+
 .pricing-card .card-banner {
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -100,3 +316,4 @@
     color: black;
 
 }
+
