@@ -1,4 +1,8 @@
 
+
+
+
+
 .One{
 
 }
@@ -7,6 +11,7 @@
     text-align: center;
     margin-top: 15px;
     font-size: 50px;
+    overflow: hidden;
     font-weight: 700;
     
 }
@@ -35,12 +40,14 @@
     text-align: center;
     font-size: 50px;
     font-weight: 700;
+    overflow: hidden;
 }
 
 .One .details .second h2{
     text-align: center;
     font-size: 50px;
     font-weight: 700;
+    overflow: hidden;
 }
 
 .One .details .first p{
@@ -62,57 +69,45 @@
     #what our client say about us     
 \*----------------------------------*/
 
-.two h1{
+.section.two {
+    padding: 50px 0;
+    background-color: #f9f9f9;
     text-align: center;
-    color: white;
-    font-size: 50px;
-    font-weight: 700;
-    
-
 }
 
-.two .testimonial-container{
-    background-color: rgba(0, 0, 0, .7);
+.section.two h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    overflow: hidden;
 }
 
-.two .testimonial{
-    display: flex;
-    margin: 50px;
-    border-bottom: 8px;
+.testimonial-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.two .testimonial p{
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
+.testimonial {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.testimonial h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #007bff;
+    overflow: hidden;
+}
+
+.testimonial p {
+    font-size: 1rem;
+    color: #555;
     line-height: 1.6;
-    font-style: italic;
-    border-bottom: 1px solid #ddd;
-}
-
-.two .testimonial h3{
-    color: white;
-    font-size: 25px;
 }
 
 
-/* ---------------------------------*\
-    #Footer Styling    
-\*----------------------------------*/
-
-.footer{
-    background-color: black;
-    color: white;
-}
-
-.footer .content{
-    display: flex;
-    justify-content: center;
-    width: 80%;
-    gap: 18rem;
-    padding-bottom: 10px;
-}
-
-.footer .Menu{
-    padding-left: 20px;
-}

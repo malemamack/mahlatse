@@ -2,7 +2,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 
+    - primary meta tags
+  -->
     <title>Home</title>
+
+    <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="assets/Tattoos/Rose Gold Brush Glitter Feminine Boutique Circle Logo (1).png" type="image">
+    
+    <!-- 
+    - flaticon
+  -->
+  <link rel="stylesheet" href="assets/css/flaticon.min.css">
 
     <!-- tab logo -->
     <link rel="shortcut icon" href="img/" type="image">
@@ -27,15 +41,27 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- cloudflare -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons.css">
+
+
 </head>
 <body>
     <header>
-        <img src="img/" alt="logo image">
-        <div class="menuTogle"></div>
+        <div class="social-media-icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
         <nav>
+            <img src="img/" alt="logo image">
+            <div class="menuTogle"></div>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="index.html#sectionOne">Services</a></li>
+                <li><a href="service.html" >Services</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="about.html" >About </a></li>
                 <li><a href="contact.html" >Contact</a></li>
@@ -43,7 +69,48 @@
         </nav>
     </header>
 
-    <section class="sectionOne">
+    <section class="hero">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/20240923.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/20240923.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/20240923.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <section class="sectionOne" id="service">
         <h2>Service I Provide</h2>
         <p>products</p>
 
@@ -147,8 +214,164 @@
     </section>
 
     <section class="sectionThree">
-        <h2>Pricing</h2>
         
+        <div class="container">
+            <h2>Our Marvelous Pricing</h2>
+            <div class="pricing-tab-container">
+                <ul class="tab-filter">
+                    <li>
+                        <button class="filter-btn active" data-filter-btn="all">
+                            <div class="btn-icon">
+                                <img src="img/" alt="">
+                            </div>
+                            <p class="btn-text">All Pricing</p>
+    
+                        </button>
+                    </li>
+    
+                    <li>
+                        <button class="filter-btn" data-filter-btn="typing">
+                            <div class="btn-icon">
+                                <img src="img/computer.png" alt="">
+                            </div>
+                            <p class="btn-text">Typing</p>
+                        </button>
+                    </li>
+    
+                    <li>
+                        <button class="filter-btn" data-filter-btn="print">
+                            <div class="btn-icon">
+                                <img src="img/paper.png" alt="">
+                            </div>
+                            <p class="btn-text">Print</p>
+                        </button>
+                    </li>
+    
+                    <li>
+                        <button class="filter-btn" data-filter-btn="copy">
+                            <div class="btn-icon">
+                                <img src="img/files.png" alt="">
+                            </div>
+                            <p class="btn-text">Copy</p>
+                        </button>
+                    </li>
+    
+                    <li>
+                        <button class="filter-btn" data-filter-btn="online">
+                            <div class="btn-icon">
+                                <img src="img/application.png" alt="">
+                            </div>
+                            <p class="btn-text">Online Application</p>
+                        </button>
+                    </li>
+                </ul>
+    
+                <ul class="grid-">
+                    <li date-filter="typing">
+                        <div class="pricing-card">
+                            <figure class="card-banner img-holder" style="width: 90; height: 90;">
+                                <img src="img/computer.png" alt="" width="90" height="90" class="img-cover">
+                            </figure>
+                            <div class="wrapper">
+                                <h3 class="h3 card-title">
+                                    typing
+                                </h3>
+                                <p class="card-text"></p>
+                                <data value="10" class="card-price">R10</data>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li date-filter="print">
+                        <div class="pricing-card">
+                            <figure class="card-banner img-holder" style="width: 90; height: 90;">
+                                <img src="img/paper.png" alt="" width="90" height="90" class="img-cover">
+                            </figure>
+                            <div class="wrapper">
+                                <h3 class="h3 card-title">
+                                    Print
+                                </h3>
+                                <p class="card-text"></p>
+                                <data value="10" class="card-price">R10</data>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li date-filter="copy">
+                        <div class="pricing-card">
+                            <figure class="card-banner img-holder" style="width: 90; height: 90;">
+                                <img src="img/files.png" alt="" width="90" height="90" class="img-cover">
+                            </figure>
+                            <div class="wrapper">
+                                <h3 class="h3 card-title">
+                                    Copy
+                                </h3>
+                                <p class="card-text"></p>
+                                <data value="10" class="card-price">R10</data>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li date-filter="online">
+                        <div class="pricing-card">
+                            <figure class="card-banner img-holder" style="width: 90; height: 90;">
+                                <img src="img/application.png" alt="" width="90" height="90" class="img-cover">
+                            </figure>
+                            <div class="wrapper">
+                                <h3 class="h3 card-title">
+                                    Online Application
+                                </h3>
+                                <p class="card-text"></p>
+                                <data value="10" class="card-price">R10</data>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </section>
+
+    <section class="footer">
+        <img src="img/" alt="logo image">
+        <div class="content">
+            <div class="Menu">
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html" class="active">About </a></li>
+                    <li><a href="contact.html" >Contact</a></li>
+                </ul>
+            </div>
+            <div class="services">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="index.html#service">Typing</a></li>
+                    <li><a href="index.html#service">Printing</a></li>
+                    <li><a href="index.html#service">Copy</a></li>
+                    <li><a href="index.html#service">Application</a></li>
+                    <li><a href="index.html#service">Company Registration</a></li>
+                    <li><a href="index.html#service">Design</a></li>
+                </ul>
+            </div>
+            <div class="follow">
+                <h3>Follow us</h3>
+                <ul>
+                    <li><a href=""> Facebook</a></li>
+                    <li><a href="">Instagram</a></li>
+                    <li><a href="">Twitter</a></li>
+                    <li><a href="">Linkedin</a></li>
+                </ul>
+            </div>
+            <div class="touch">
+                <h3>Get In Touch</h3>
+                <ul>
+                    <li><a href=""></a></li>
+                </ul>
+            </div>
+        </div>
     </section>
 
 
