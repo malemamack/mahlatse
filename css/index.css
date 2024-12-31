@@ -45,24 +45,26 @@
 \*-----------------------------------*/
 
 .sectionTwo {
-    background-color: #f8f9fa; /* Light background color */
-    padding: 15px 0; /* Vertical padding */
+    /* background-color: #f8f9fa; Light background color */
+    /* padding: 15px 0; Vertical padding */
     text-align: center; /* Center align text */
+    
 }
 
 .sectionTwo .banner {
-    background-color: #343a40; /* Dark background color */
-    color: white; /* White text color */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    max-width: 98%; /* Maximum width of the banner */
+    /* background-color: #343a40; Dark background color */
+    /* color: white; White text color */
+    /* border-radius: 10px; Rounded corners */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); Subtle shadow */
+    /* max-width: 98%; Maximum width of the banner */
     margin: 0 auto; /* Center the banner horizontally */
+    background: none;
 }
 
 .sectionTwo .banner h2 {
     font-size: 2rem; /* Font size for the heading */
     margin-bottom: 20px; /* Space below the heading */
-    data-aos: fade-up; /* Animate the heading */
+    
 }
 
 .sectionTwo .banner p {
@@ -110,6 +112,7 @@
     justify-content: center;
     gap: 3px;
     margin-block-end: 30px;
+    border-radius: 10px  ;
 }
 
 .filter-list {

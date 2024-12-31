@@ -157,6 +157,7 @@ header nav ul li a.active {
     margin: 0 auto;
     gap: 2rem;
     padding-bottom: 10px;
+    border-radius: 10px;
 }
 
 .footer .content div {

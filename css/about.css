@@ -115,9 +115,9 @@
 \*----------------------------------*/
 
 .banner {
-    /* background-image: url('img/banner.jpg'); Replace with your banner image */
+    
     background-size: cover;
-    background-color: #333;
+    /* background-color: #333; */
     background-position: center;
     padding: 50px 20px;
     text-align: center;
