@@ -1,0 +1,139 @@
+.banner {
+    /* background-image: url('img/contact-banner.jpg'); Replace with your banner image */
+    background-size: cover;
+    background-color: #333;
+    background-position: center;
+    padding: 50px 20px;
+    text-align: center;
+    color: white;
+    border-top: 1px solid white;
+    margin-bottom: 5px;
+}
+
+.banner-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.banner h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.banner p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.banner-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.banner-btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.contact-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.contact-form, .contact-map {
+    flex: 1 1 45%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2, .contact-map h2 {
+    margin-bottom: 20px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 5px;
+}
+
+.contact-form input, .contact-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+.contact-map iframe {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+.contact-info, .business-hours, .social-media, .faq, .team {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.contact-info h2, .business-hours h2, .social-media h2, .faq h2, .team h2 {
+    margin-bottom: 20px;
+}
+
+.social-media ul {
+    list-style: none;
+    padding: 0;
+}
+
+.social-media ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-media ul li a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+.social-media ul li a:hover {
+    color: #0056b3;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.team-member {
+    margin-bottom: 20px;
+}

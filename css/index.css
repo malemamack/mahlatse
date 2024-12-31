@@ -62,6 +62,7 @@
 .sectionTwo .banner h2 {
     font-size: 2rem; /* Font size for the heading */
     margin-bottom: 20px; /* Space below the heading */
+    data-aos: fade-up; /* Animate the heading */
 }
 
 .sectionTwo .banner p {

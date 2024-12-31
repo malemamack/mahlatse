@@ -30,6 +30,8 @@
     <!-- cloudflare -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <!-- aos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
 <body>
     <header>
@@ -44,13 +46,21 @@
             <div class="menuTogle"></div>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="service.html" >Services</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="index.html#service" >Services</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
                 <li><a href="about.html" class="active">About </a></li>
                 <li><a href="contact.html" >Contact</a></li>
             </ul>
         </nav>
     </header>
+
+    <section class="banner" data-aos="fade-up">
+        <div class="banner-content">
+            <h1>Welcome to Our Services</h1>
+            <p>Providing the best solutions for your needs</p>
+            <a href="index.html#service" class="banner-btn">Explore Services</a>
+        </div>
+    </section>
 
     <section class="One">
         <h1>About Us</h1>
@@ -66,6 +76,14 @@
                 <h2>Vission</h2>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo et perferendis odit ab recusandae voluptate ratione fuga. Eligendi deleniti excepturi molestias, optio sequi quam ratione recusandae quas dignissimos mollitia culpa! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, quod vitae? Quasi dolores dignissimos, officiis tenetur voluptatibus aut ullam fugiat quisquam rerum provident. Dolorem quos reiciendis optio, maxime ad aliquid.</p>
             </div>
+        </div>
+    </section>
+
+    <section class="banner" data-aos="fade-up">
+        <div class="banner-content">
+            <h1>Our Commitment</h1>
+            <p>We are dedicated to providing the best services to our clients</p>
+            <a href="index.html#service" class="banner-btn">Learn More</a>
         </div>
     </section>
 
@@ -91,14 +109,14 @@
     </section>
 
     <section class="footer">
-        <img src="img/" alt="logo image">
+        <img src="img/Untitled (5).png" alt="logo image">
         <div class="content">
             <div class="Menu">
                 <h3>Menu</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="service.html">Services</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="index.html#service">Services</a></li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
                     <li><a href="about.html" class="active">About </a></li>
                     <li><a href="contact.html" >Contact</a></li>
                 </ul>
@@ -150,6 +168,12 @@
 
     <!-- java script -->
     <script src="js/script.js"></script>
+
+    <!-- aos -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     
 </body>
 </html>
