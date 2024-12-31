@@ -30,6 +30,10 @@
     <!-- cloudflare -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+     <!-- aos -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+     
 
 </head>
 <body>
@@ -57,7 +61,14 @@
         <div class="banner-content">
             <h1>Contact Us</h1>
             <p>We are here to assist you. Reach out to us for any inquiries.</p>
-            <a href="#contact-form" class="banner-btn">Get in Touch</a>
+            <div class="dropdown">
+                <button class="banner-btn dropdown-toggle">Get in Touch</button>
+                <div class="dropdown-menu">
+                    <a href="https://wa.me/27765668747" target="_blank">WhatsApp</a>
+                    <a href="tel:+27765668747">Phone</a>
+                    <a href="mailto:malemamahlatse70@gmail.com">Email</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -104,7 +115,7 @@
         <div class="team-member">
             <h3>Mahlatse Malema</h3>
             <p>CEO</p>
-            <p>Email: jmalemamahlatse70@gmail.com</p>
+            <p>Email: malemamahlatse70@gmail.com</p>
         </div>
         <!-- <div class="team-member">
             <h3>Jane Smith</h3>
@@ -170,6 +181,29 @@
 
     <!-- java script -->
     <script src="js/script.js"></script>
+    <!-- aos -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        dropdownToggle.addEventListener('click', function () {
+            dropdownMenu.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function (e) {
+            if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    });
+</script>
     
 </body>
 </html>

@@ -3,11 +3,9 @@
     background-size: cover;
     background-color: #333;
     background-position: center;
-    padding: 50px 20px;
+    padding: 100px 20px;
     text-align: center;
     color: white;
-    border-top: 1px solid white;
-    margin-bottom: 5px;
 }
 
 .banner-content {
@@ -25,19 +23,49 @@
     margin-bottom: 40px;
 }
 
-.banner-btn {
+.dropdown {
+    position: relative;
     display: inline-block;
-    padding: 10px 20px;
+}
+
+.dropdown-toggle {
     background-color: #007bff;
     color: white;
-    text-decoration: none;
+    padding: 10px 20px;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.banner-btn:hover {
+.dropdown-toggle:hover {
     background-color: #0056b3;
-    color: white;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    min-width: 160px;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
 }
 
 .contact-section {
