@@ -44,8 +44,8 @@
 
 }
 
-@media (max-width: 786px) {
-
+@media (max-width: 812px) {
+    
 }
 
 @media (max-width: 610px) {
@@ -53,5 +53,42 @@
 }
 
 @media (max-width:425px) {
+     .carousel-caption {
+        position: left;
+        right: 0%;
+        left: 0;
+        bottom: 10px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        color: white;
+        padding: 10px;
+        padding-left: -200px;
+        font-size: 14px; /* Smaller font size for small screens */
+        width: 90%; /* Adjust width to fit better on small screens */
+        margin: 0 auto; /* Center the caption */
+    }
+    
+    
+    .sectionOne .servicesBox {
+        grid-template-columns: repeat(2, minmax(100px, 280px));
+    }
 
+    
+    .filter-btn .btn-icon img {
+        display: none;
+    }
+
+    .filter-btn .btn-text {
+        font-weight: bolder;
+        font-size: 18px;
+    }
+
+    .grid-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer .content {
+        display: inline;
+        
+    }
 }

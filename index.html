@@ -43,7 +43,58 @@
     <!-- aos -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+}
 
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+header .menu-icon {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+header .menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header .menu li {
+    margin: 0 10px;
+}
+
+header .menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 425px) {
+    header .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    header .menu-icon {
+        display: block;
+    }
+
+    header .menu.active {
+        display: flex;
+    }
+}
+    </style>
 
 
 </head>
@@ -57,8 +108,8 @@
         </div>
         <nav data-aos="fade-up">
             <img src="img/Untitled (5).png" alt="logo image">
-            <div class="menuTogle"></div>
-            <ul>
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            <ul class="menu">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="index.html#service" >Services</a></li>
                 <li><a href="index.html#pricing">Pricing</a></li>
@@ -908,6 +959,13 @@ document.addEventListener('DOMContentLoaded', function () {
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
       AOS.init();
+    </script>
+
+    <script>
+        function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('active');
+}
     </script>
     
 </body>
