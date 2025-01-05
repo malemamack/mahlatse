@@ -3,7 +3,7 @@
     background-size: cover;
     background-color: #333;
     background-position: center;
-    padding: 100px 20px;
+    padding: 40px 20px;
     text-align: center;
     color: white;
 }
@@ -11,6 +11,12 @@
 .banner-content {
     max-width: 800px;
     margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 .banner h1 {

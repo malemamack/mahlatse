@@ -39,10 +39,14 @@
 <body>
     <header>
         <div class="social-media-icons" data-aos="fade-up">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/thecyberhub" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/mahlatsescyberhub" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.github.com/malemamack" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://wa.me/+27670126762" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:malemamack@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+27670126762"><i class="fas fa-phone"></i></a>
+            <!-- <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a> -->
+            <!-- <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a> -->
         </div>
     </header>
     <nav class="navbar navbar-expand-md navbar-light bg-dark">
@@ -81,12 +85,12 @@
         </div>
       </nav>
 
-    <section class="banner" data-aos="fade-up">
+    <section class="banner" data-aos="fade-up" style="background-image: url(img/communication-4871230_1280.jpg);">
         <div class="banner-content">
             <h1>Contact Us</h1>
             <p>We are here to assist you. Reach out to us for any inquiries.</p>
             <div class="dropdown">
-                <a href="">Get in Touch</a>
+                <a href="contact.html#contact-section">Get in Touch</a>
                 
         </div>
     </section>
@@ -95,7 +99,7 @@
         <div class="contact-container">
             <div class="contact-form" data-aos="fade-up">
                 <h2>Contact Form</h2>
-                <form action="#" method="post">
+                <form id="whatsapp-form">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
                     
@@ -105,7 +109,7 @@
                     <label for="message">Message:</label>
                     <textarea id="message" name="message" rows="5" required></textarea>
                     
-                    <button type="submit">Submit</button>
+                    <button type="submit">Send via WhatsApp</button>
                 </form>
             </div>
             <div class="contact-map" data-aos="fade-up">
@@ -228,6 +232,21 @@
             }
         });
     });
+</script>
+
+<script>
+    document.getElementById('whatsapp-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    
+    const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+    const whatsappUrl = `https://wa.me/+27670126762?text=${whatsappMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+});
 </script>
     
 </body>
