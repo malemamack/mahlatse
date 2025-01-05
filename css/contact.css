@@ -1,7 +1,7 @@
 .banner {
     background-image: url('img/mobile-phone-1419275_1280.jpg');
     background-size: cover;
-    /* background-color: #333; */
+    background-color: #333;
     background-position: center;
     padding: 100px 20px;
     text-align: center;
@@ -28,7 +28,7 @@
     display: inline-block;
 }
 
-.dropdown-toggle {
+.dropdown {
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -36,6 +36,11 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+.dropdown a{
+    color: white;
+    text-decoration: none;
 }
 
 .dropdown-toggle:hover {

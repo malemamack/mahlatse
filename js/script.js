@@ -1,15 +1,4 @@
-let menuToggle = document.querySelector('.menuToggle');
-let header = document.querySelector('header');
-let sectio
 
-let menuToggle = document.querySelector('.menuToggle');
-let header = document.querySelector('header');
-let section = document.querySelector('section');
-
-function toggleMenu() {
-    const menu = document.querySelector('.menu');
-    menu.classList.toggle('active');
-}
 
 // Add event listeners to filter buttons
 window.addEventListener('load', () => {

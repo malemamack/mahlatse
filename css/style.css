@@ -38,55 +38,29 @@ h1, h2, h3, h4, h5, h6 {
     color: #007bff;
 }
 
-header {
-    display: flex;
-    flex-direction: column;
-}
 
 
-
-header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 15px;
-}
-
-header nav img{
-    width: 50px;
-}
-
-header nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-header nav ul li {
-    margin: 0 5px;
-}
-
-header nav ul li a {
-    display: flex;
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .navbar-nav .nav-link {
     color: white;
-    padding: 15px 5px;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 700;
-    transition: all .5s ease;
+    font-weight: 500;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #007bff;
+  }
+
+.navbar a img {
+    width: 50px;
+    padding-left: 0;
 }
 
-header nav ul li a:hover {
-    border-bottom: 2px solid white;
-    padding-bottom: 10px;
-}
 
-header nav ul li a.active {
-    border-bottom: 2.5px solid white;
-    padding-bottom: 10px;
-}
+
 /* Section One Styling */
 .sectionOne{
     display: flex;
@@ -137,7 +111,6 @@ header nav ul li a.active {
 \*----------------------------------*/
 
 .footer {
-    background-color: #333;
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -158,6 +131,8 @@ header nav ul li a.active {
     gap: 2rem;
     padding-bottom: 10px;
     border-radius: 10px;
+    background-color: #333;
+    opacity: 0.8;
 }
 
 .footer .content div {
