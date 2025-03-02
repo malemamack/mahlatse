@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handle profile picture upload
     $profile_picture = 'default_profile_picture.png'; // Default profile picture
     if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 0) {
-        $target_dir = "uploads/profile_pictures/";
+        $target_dir = "uploads/profile_pics/";
         if (!is_dir($target_dir)) {
             mkdir($target_dir, 0777, true);
         }
