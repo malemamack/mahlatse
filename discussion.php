@@ -1,4 +1,6 @@
 <?php
+
+
 // Database connection (modify with your actual database credentials)
 $servername = "localhost";
 $username = "root";
@@ -10,6 +12,27 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_comment'])) {
+    $user_id = 1; // Replace with actual logged-in user ID
+    $book_id = $_POST['book_id'];
+    $comment = trim($_POST['comment']);
+
+    if (!empty($comment)) {
+        $insert_comment_sql = "INSERT INTO comments (book_id, user_id, comment, created_at) VALUES (?, ?, ?, NOW())";
+        $insert_comment_stmt = $conn->prepare($insert_comment_sql);
+        if ($insert_comment_stmt === false) {
+            die("Prepare failed: " . $conn->error);
+        }
+        $insert_comment_stmt->bind_param("iis", $book_id, $user_id, $comment);
+        $insert_comment_stmt->execute();
+        $insert_comment_stmt->close();
+        
+        // Refresh page to display new comment
+        header("Location: ".$_SERVER['PHP_SELF']."?book_id=".$book_id);
+        exit();
+    }
 }
 
 // Fetch the book data based on the book_id passed via GET parameter
@@ -27,7 +50,7 @@ $book_result = $stmt->get_result();
 $book = $book_result->fetch_assoc();
 
 // Get similar books
-$similar_books_sql = "SELECT b.id, b.title, b.image_url FROM books b
+$similar_books_sql = "SELECT b.id, b.title, b.image_path FROM books b
                       JOIN similar_books sb ON b.id = sb.similar_book_id
                       WHERE sb.book_id = ?";
 $similar_books_stmt = $conn->prepare($similar_books_sql);
@@ -39,7 +62,7 @@ $similar_books_stmt->execute();
 $similar_books_result = $similar_books_stmt->get_result();
 
 // Get comments for the book
-$comments_sql = "SELECT c.*, u.name FROM comments c
+$comments_sql = "SELECT c.*, u.name, u.profile_picture FROM comments c
                  JOIN users u ON c.user_id = u.id
                  WHERE c.book_id = ? AND c.reply_to IS NULL
                  ORDER BY c.created_at DESC";
@@ -82,13 +105,34 @@ $comments_result = $comments_stmt->get_result();
         .thumbs { display: flex; gap: 10px; }
         .thumbs button { background: none; border: none; cursor: pointer; }
         footer { text-align: center; padding: 1rem; background: #333; color: white; margin-top: 20px; }
+        .book-info form {
+            margin-top: 10px;
+        }
+        .book-info textarea {
+            width: 100%;
+            height: 60px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .book-info button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .book-info button:hover {
+            background: #555;
+        }
     </style>
 </head>
 <body>
     <nav>
         <ul>
             <li><a href="user_dashboard.php">Home</a></li>
-            <!-- <li><a href="discussion.php">Discussion</a></li> -->
+            
             <li><a href="profile.php">My Profile</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
@@ -98,20 +142,17 @@ $comments_result = $comments_stmt->get_result();
         <!-- Left Aside: Book Information and Similar Books -->
         <div class="left-aside">
             <div class="book-info">
-                <img src="<?php echo htmlspecialchars($book['image_url']); ?>" alt="<?php echo htmlspecialchars($book['title']); ?>">
+                <img src="<?php echo htmlspecialchars($book['image_path']); ?>" alt="<?php echo htmlspecialchars($book['title']); ?>">
                 <h2><?php echo htmlspecialchars($book['title']); ?></h2>
                 <p>Author: <?php echo htmlspecialchars($book['author']); ?></p>
-                <p><a href="<?php echo htmlspecialchars($book['download_link']); ?>">Download</a></p>
-            </div>
-
-            <div class="similar-books">
-                <h3>Similar Books</h3>
-                <?php while ($similar_book = $similar_books_result->fetch_assoc()): ?>
-                    <div class="book">
-                        <img src="<?php echo htmlspecialchars($similar_book['image_url']); ?>" alt="<?php echo htmlspecialchars($similar_book['title']); ?>">
-                        <h4><?php echo htmlspecialchars($similar_book['title']); ?></h4>
-                    </div>
-                <?php endwhile; ?>
+                <p><a href="<?php echo htmlspecialchars($book['pdf_path']); ?>" class="download-btn">Download</a></p>
+                
+                <!-- Comment Form -->
+                <form action="" method="POST">
+                    <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
+                    <textarea name="comment" placeholder="Write your comment..." required></textarea>
+                    <button type="submit" name="submit_comment">Comment</button>
+                </form>
             </div>
         </div>
 
@@ -121,16 +162,10 @@ $comments_result = $comments_stmt->get_result();
             <?php while ($comment = $comments_result->fetch_assoc()): ?>
                 <div class="comment">
                     <div class="profile">
-                        <img src="default_profile_picture.png" alt="<?php echo htmlspecialchars($comment['name']); ?>"> <!-- Placeholder image -->
+                        <img src="<?php echo htmlspecialchars($comment['profile_picture']); ?>" alt="<?php echo htmlspecialchars($comment['name']); ?>" width="40" height="40"> <!-- User's profile picture -->
                         <div class="comment-text">
                             <strong><?php echo htmlspecialchars($comment['name']); ?></strong>
                             <p><?php echo htmlspecialchars($comment['comment']); ?></p>
-                            <div class="thumbs">
-                                <button>👍</button>
-                                <button>👎</button>
-                                <button>🔊</button> <!-- Placeholder for voice recording button -->
-                                <button>Reply</button>
-                            </div>
                         </div>
                     </div>
                 </div>

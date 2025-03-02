@@ -76,19 +76,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Verify OTP</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('img/login.jpg'); /* Replace with the path to your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #005bb5;
+        }
+    </style>
 </head>
 <body>
-    <h2>Verify OTP</h2>
-    <form method="post">
-        <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
-        <label>Enter OTP:</label>
-        <input type="text" name="otp" required><br>
-
-        <input type="submit" value="Verify">
-    </form>
-    <form method="post">
-        <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
-        <input type="submit" name="resend" value="Resend OTP">
-    </form>
+    <div class="container">
+        <h2>Verify OTP</h2>
+        <form method="post">
+            <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
+            <label>Enter OTP:</label>
+            <input type="text" name="otp" required><br>
+            <input type="submit" value="Verify">
+        </form>
+        <form method="post">
+            <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
+            <input type="submit" name="resend" value="Resend OTP">
+        </form>
+    </div>
 </body>
 </html>

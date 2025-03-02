@@ -21,8 +21,7 @@ $user = $user_result->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle form submission
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
+    $first_name = $_POST['name'];
     $bio = $_POST['bio'];
     $email = $_POST['email'];
 
@@ -43,9 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Update user details in the database
-    $update_sql = "UPDATE users SET first_name = ?, last_name = ?, email = ?, bio = ?, profile_picture = ? WHERE id = ?";
+    $update_sql = "UPDATE users SET name = ?,  email = ?, bio = ?, profile_picture = ? WHERE id = ?";
     $stmt = $conn->prepare($update_sql);
-    $stmt->bind_param("sssssi", $first_name, $last_name, $email, $bio, $profile_picture, $user_id);
+    $stmt->bind_param("ssssi", $name,  $email, $bio, $profile_picture, $user_id);
     if ($stmt->execute()) {
         echo "Profile updated successfully!";
     } else {
@@ -168,14 +167,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <form action="profile.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="first_name">First Name:</label>
-                <input type="text" id="first_name" name="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" required>
+                <label for="name">First Name:</label>
+                <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['name']); ?>" required>
             </div>
             
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="last_name">Last Name:</label>
                 <input type="text" id="last_name" name="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label for="email">Email:</label>

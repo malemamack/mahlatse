@@ -43,7 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-image: url('img/login.jpg'); /* Replace with the path to your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             margin: 0;
             padding: 0;
         }
@@ -51,17 +54,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: 300px;
             margin: 100px auto;
             padding: 20px;
-            background-color: white;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         h2 {
             text-align: center;
             margin-bottom: 20px;
+            color: white;
         }
         label {
             display: block;
             margin-bottom: 5px;
+            color: white;
         }
         input[type="email"], input[type="password"], select {
             width: 100%;

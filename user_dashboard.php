@@ -175,10 +175,10 @@
                         const bookElement = document.createElement('div');
                         bookElement.classList.add('book');
                         bookElement.innerHTML = `
-                            <img src="${book.image_url}" alt="${book.title}">
+                            <img src="${book.image_path}" alt="${book.title}">
                             <h4>${book.title}</h4>
                             <p>Author: ${book.author}</p>
-                            <a href="${book.download_link}" class="download-btn" target="_blank">Download</a>
+                            <a href="${book.pdf_path}" class="download-btn" target="_blank">Download</a>
                             <a href="discussion.php?book_id=${book.id}" class="discussion-btn" target="_blank">Discussion</a>
                         `;
                         bookContainer.appendChild(bookElement);
