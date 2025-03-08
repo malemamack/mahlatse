@@ -1,4 +1,5 @@
 <?php
+// filepath: c:\xampp\htdocs\mahlatse\profile.php
 // Start session and check if user is logged in
 session_start();
 
@@ -32,23 +33,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $target_dir = 'uploads/profile_pics/';
         $target_file = $target_dir . $image_name;
 
-        if (move_uploaded_file($profile_picture['tmp_name'], $target_file)) {
-            $profile_picture = $image_name; // Store the new file name
+        // Check if the uploads directory exists, if not, create it
+        if (!is_dir($target_dir)) {
+            mkdir($target_dir, 0777, true);
+        }
+
+        // Validate file type and size
+        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+        $max_file_size = 5 * 1024 * 1024; // 5MB limit
+
+        if (!in_array($profile_picture['type'], $allowed_types)) {
+            $_SESSION['error_message'] = "Invalid file type. Only JPG, PNG, and GIF are allowed.";
+            $profile_picture = $user['profile_picture']; // Keep the old image if validation fails
+        } elseif ($profile_picture['size'] > $max_file_size) {
+            $_SESSION['error_message'] = "File size exceeds the maximum allowed limit of 5MB.";
+            $profile_picture = $user['profile_picture']; // Keep the old image if validation fails
         } else {
-            $profile_picture = $user['profile_picture']; // Keep the old image if upload fails
+            // Check if the file is an actual image
+            $check = getimagesize($profile_picture['tmp_name']);
+            if ($check !== false) {
+                if (move_uploaded_file($profile_picture['tmp_name'], $target_file)) {
+                    $profile_picture = $image_name; // Store the new file name
+                } else {
+                    $_SESSION['error_message'] = "Sorry, there was an error uploading your file.";
+                    $profile_picture = $user['profile_picture']; // Keep the old image if upload fails
+                }
+            } else {
+                $_SESSION['error_message'] = "File is not an image.";
+                $profile_picture = $user['profile_picture']; // Keep the old image if file is not an image
+            }
         }
     } else {
         $profile_picture = $user['profile_picture']; // Keep the old image if no new image is uploaded
     }
 
     // Update user details in the database
-    $update_sql = "UPDATE users SET name = ?,  email = ?, bio = ?, profile_picture = ? WHERE id = ?";
+    $update_sql = "UPDATE users SET name = ?, email = ?, bio = ?, profile_picture = ? WHERE id = ?";
     $stmt = $conn->prepare($update_sql);
-    $stmt->bind_param("ssssi", $name,  $email, $bio, $profile_picture, $user_id);
+    $stmt->bind_param("ssssi", $first_name, $email, $bio, $profile_picture, $user_id);
     if ($stmt->execute()) {
-        echo "Profile updated successfully!";
+        $_SESSION['success_message'] = "Profile updated successfully!";
+        header("Location: profile.php"); // Redirect to the same page to show the message
+        exit();
     } else {
-        echo "Error updating profile: " . $stmt->error;
+        $_SESSION['error_message'] = "Error updating profile: " . $stmt->error;
+        header("Location: profile.php"); // Redirect back to the profile page
+        exit();
     }
 }
 
@@ -149,6 +179,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         nav ul li a:hover {
             background-color: #555;
         }
+
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
     </style>
 </head>
 <body>
@@ -165,16 +211,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
 
     <div class="container">
+        <!-- Display success or error messages -->
+        <?php if (isset($_SESSION['success_message'])): ?>
+            <div class="alert alert-success">
+                <?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['error_message'])): ?>
+            <div class="alert alert-error">
+                <?php echo $_SESSION['error_message']; unset($_SESSION['error_message']); ?>
+            </div>
+        <?php endif; ?>
+
         <form action="profile.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">First Name:</label>
                 <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['name']); ?>" required>
             </div>
-            
-            <!-- <div class="form-group">
-                <label for="last_name">Last Name:</label>
-                <input type="text" id="last_name" name="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required>
-            </div> -->
 
             <div class="form-group">
                 <label for="email">Email:</label>
@@ -189,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group">
                 <label for="profile_picture">Profile Picture:</label>
                 <input type="file" id="profile_picture" name="profile_picture">
-                <img src="uploads/profile_pics/<?php echo $user['profile_picture']; ?>" alt="Profile Picture" class="profile-image-preview">
+                <img src="uploads/profile_pics/<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture" class="profile-image-preview">
             </div>
 
             <button type="submit">Update Profile</button>
