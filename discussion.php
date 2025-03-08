@@ -14,22 +14,23 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_comment'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = 1; // Replace with actual logged-in user ID
     $book_id = $_POST['book_id'];
     $comment = trim($_POST['comment']);
+    $reply_to = isset($_POST['reply_to']) ? $_POST['reply_to'] : null;
 
     if (!empty($comment)) {
-        $insert_comment_sql = "INSERT INTO comments (book_id, user_id, comment, created_at) VALUES (?, ?, ?, NOW())";
+        $insert_comment_sql = "INSERT INTO comments (book_id, user_id, comment, reply_to, created_at) VALUES (?, ?, ?, ?, NOW())";
         $insert_comment_stmt = $conn->prepare($insert_comment_sql);
         if ($insert_comment_stmt === false) {
             die("Prepare failed: " . $conn->error);
         }
-        $insert_comment_stmt->bind_param("iis", $book_id, $user_id, $comment);
+        $insert_comment_stmt->bind_param("iisi", $book_id, $user_id, $comment, $reply_to);
         $insert_comment_stmt->execute();
         $insert_comment_stmt->close();
         
-        // Refresh page to display new comment
+        // Refresh page to display new comment or reply
         header("Location: ".$_SERVER['PHP_SELF']."?book_id=".$book_id);
         exit();
     }
@@ -73,6 +74,15 @@ if ($comments_stmt === false) {
 $comments_stmt->bind_param("i", $book_id);
 $comments_stmt->execute();
 $comments_result = $comments_stmt->get_result();
+
+// Fetch replies for each comment
+$replies_sql = "SELECT c.*, u.name, u.profile_picture FROM comments c
+                JOIN users u ON c.user_id = u.id
+                WHERE c.reply_to = ? ORDER BY c.created_at ASC";
+$replies_stmt = $conn->prepare($replies_sql);
+if ($replies_stmt === false) {
+    die("Prepare failed: " . $conn->error);
+}
 ?>
 
 <!DOCTYPE html>
@@ -166,8 +176,35 @@ $comments_result = $comments_stmt->get_result();
                         <div class="comment-text">
                             <strong><?php echo htmlspecialchars($comment['name']); ?></strong>
                             <p><?php echo htmlspecialchars($comment['comment']); ?></p>
+                            <button class="reply-button" onclick="showReplyForm(<?php echo $comment['id']; ?>)">Reply</button>
+                            <button class="like-button" onclick="likeComment(<?php echo $comment['id']; ?>)">Like</button>
+                            <span id="like-count-<?php echo $comment['id']; ?>"><?php echo $comment['like_count']; ?></span>
                         </div>
                     </div>
+                    <div id="reply-form-<?php echo $comment['id']; ?>" class="reply-form" style="display:none;">
+                        <form action="" method="POST">
+                            <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
+                            <input type="hidden" name="reply_to" value="<?php echo $comment['id']; ?>">
+                            <textarea name="comment" placeholder="Write your reply..." required></textarea>
+                            <button type="submit" name="submit_reply">Reply</button>
+                        </form>
+                    </div>
+                    <?php
+                    // Fetch and display replies for this comment
+                    $replies_stmt->bind_param("i", $comment['id']);
+                    $replies_stmt->execute();
+                    $replies_result = $replies_stmt->get_result();
+                    while ($reply = $replies_result->fetch_assoc()): ?>
+                        <div class="comment reply">
+                            <div class="profile">
+                                <img src="<?php echo htmlspecialchars($reply['profile_picture']); ?>" alt="<?php echo htmlspecialchars($reply['name']); ?>" width="40" height="40"> <!-- User's profile picture -->
+                                <div class="comment-text">
+                                    <strong><?php echo htmlspecialchars($reply['name']); ?></strong>
+                                    <p><?php echo htmlspecialchars($reply['comment']); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endwhile; ?>
                 </div>
             <?php endwhile; ?>
         </div>
@@ -177,6 +214,29 @@ $comments_result = $comments_stmt->get_result();
         <p>&copy; 2025 Book Website</p>
     </footer>
 
+    <script>
+        function showReplyForm(commentId) {
+            var replyForm = document.getElementById('reply-form-' + commentId);
+            if (replyForm.style.display === 'none') {
+                replyForm.style.display = 'block';
+            } else {
+                replyForm.style.display = 'none';
+            }
+        }
+
+        function likeComment(commentId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "like_comment.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var likeCount = document.getElementById('like-count-' + commentId);
+                likeCount.innerText = xhr.responseText; // Update like count
+            }
+        };
+        xhr.send("comment_id=" + commentId); // Send comment_id to the backend
+    }
+    </script>
 </body>
 </html>
 
