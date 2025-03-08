@@ -63,7 +63,7 @@ $similar_books_stmt->execute();
 $similar_books_result = $similar_books_stmt->get_result();
 
 // Get comments for the book
-$comments_sql = "SELECT c.*, u.name, u.profile_picture FROM comments c
+$comments_sql = "SELECT c.*, u.name, u.profile_picture, c.like_count FROM comments c
                  JOIN users u ON c.user_id = u.id
                  WHERE c.book_id = ? AND c.reply_to IS NULL
                  ORDER BY c.created_at DESC";
@@ -76,7 +76,7 @@ $comments_stmt->execute();
 $comments_result = $comments_stmt->get_result();
 
 // Fetch replies for each comment
-$replies_sql = "SELECT c.*, u.name, u.profile_picture FROM comments c
+$replies_sql = "SELECT c.*, u.name, u.profile_picture, c.like_count FROM comments c
                 JOIN users u ON c.user_id = u.id
                 WHERE c.reply_to = ? ORDER BY c.created_at ASC";
 $replies_stmt = $conn->prepare($replies_sql);
@@ -201,6 +201,8 @@ if ($replies_stmt === false) {
                                 <div class="comment-text">
                                     <strong><?php echo htmlspecialchars($reply['name']); ?></strong>
                                     <p><?php echo htmlspecialchars($reply['comment']); ?></p>
+                                    <button class="like-button" onclick="likeComment(<?php echo $reply['id']; ?>)">Like</button>
+                                    <span id="like-count-<?php echo $reply['id']; ?>"><?php echo $reply['like_count']; ?></span>
                                 </div>
                             </div>
                         </div>

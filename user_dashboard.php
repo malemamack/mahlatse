@@ -114,7 +114,7 @@
           
             <!-- <li><a href="discussion.php">Discussion</a></li> -->
             <li><a href="profile.php">My Profile</a></li>
-            <li><a href="profile.php">Logout</a></li>
+            <li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
 
